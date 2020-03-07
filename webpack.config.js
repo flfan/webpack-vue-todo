@@ -10,7 +10,7 @@ const isDev = process.env.NODE_ENV === "development";
 config = {
   mode: "none",
   target: "web",
-  entry: path.join(__dirname, "src/index.js"),
+  entry: path.join(__dirname, "client/index.js"),
   output: {
     filename: "bundle[hash:8].js",
     path: path.join(__dirname, "dist")
@@ -90,26 +90,24 @@ if (isDev) {
   );
 } else {
   config.entry = {
-    app: path.join(__dirname, "src/index.js"),
+    app: path.join(__dirname, "client/index.js"),
     vendor: ["vue"]
   };
   config.output.filename = "[name].[chunkhash:8].js";
   config.optimization = {
-      splitChunks: {
-        cacheGroups: {
-          commons: {
-            name: "vendor",
-            
-            // chunks: "initial",
-            // minChunks: 2
-          },
-          runtime: {
-            name: 'runtime'
-          }
+    runtimeChunk: true,
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          name: "vendor"
+
+          // chunks: "initial",
+          // minChunks: 2
         }
       }
     }
-  
+  };
+
   config.module.rules.push({
     test: /\.styl/,
     use: ExtractTextPlugin.extract({
@@ -127,7 +125,7 @@ if (isDev) {
     })
   });
   config.plugins.push(
-    new ExtractTextPlugin("styles.[md5:contenthash:hex:8].css"),
+    new ExtractTextPlugin("styles.[md5:contenthash:hex:8].css")
     // new webpack.optimize.CommonsChunkPlugin({  // 已弃用
     //   name: "vendor"
     // })
