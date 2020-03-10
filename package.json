@@ -10,8 +10,7 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.config.client.js",
     "clean": "rimraf dist",
     "lint": "eslint --ext .js --ext .jsx --ext .vue client/ build/",
-    "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue client/ build/",
-    "precommit": "npm run lint"
+    "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue client/ build/"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +19,11 @@
     "babel-eslint": "^10.1.0",
     "eslint-loader": "^3.0.3",
     "vue": "^2.6.11"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-fix"
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
