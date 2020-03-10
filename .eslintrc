@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "standard",
+    "plugin:vue/recommended"
+  ],
+  "plugins": [
+    // "eslint-plugin-html",
+    "eslint-plugin-vue"
+  ],
+  // "parser": "babel-eslint"
+  "parser": "vue-eslint-parser"
+}
