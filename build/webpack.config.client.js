@@ -29,7 +29,7 @@ const devServer = {
 
 if (isDev) {
   config = webpackMerge(baseConfig, {
-    devtool: '#cheap-module-eval-source-map',
+    devtool: '#cheap-module-eval-source-map', // webpack4可以不写
     module: {
       rules: [
         {
@@ -99,15 +99,14 @@ if (isDev) {
     },
     devServer,
     plugins: defaultPlugins.concat([
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoEmitOnErrorsPlugin()
+      new webpack.HotModuleReplacementPlugin()
+      // new webpack.NoEmitOnErrorsPlugin()
     ])
   })
 } else {
   config = webpackMerge(baseConfig, {
     entry: {
-      app: path.join(__dirname, '../client/index.js'),
-      vendor: ['vue']
+      app: path.join(__dirname, '../client/index.js')
     },
     output: {
       filename: '[name].[chunkhash:8].js'
@@ -115,11 +114,7 @@ if (isDev) {
     optimization: {
       runtimeChunk: true,
       splitChunks: {
-        cacheGroups: {
-          commons: {
-            name: 'vendor'
-          }
-        }
+        chunks: 'all'
       }
     },
     module: {
