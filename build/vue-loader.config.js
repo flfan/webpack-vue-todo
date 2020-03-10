@@ -1,4 +1,4 @@
-module.exports = (isDev ) => { // 有问题
+module.exports = (isDev) => { // 有问题
   return {
     // preserveWhitespace: false, // 2.6已弃用
     Whitespace: 'preserve',
