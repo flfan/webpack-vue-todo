@@ -5,6 +5,7 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const webpackMerge = require('webpack-merge')
 const baseConfig = require('./webpack.config.base.js')
+const stylusOneOf = require('./stylus-oneOf.config')
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -34,66 +35,7 @@ if (isDev) {
       rules: [
         {
           test: /\.styl(us)?$/, // 加$只能处理以.styl结尾的文件，不能处理vue中的stylus
-          oneOf: [
-            {
-              resourceQuery: /module/,
-              use: [
-                'vue-style-loader',
-                {
-                  loader: 'css-loader',
-                  options: {
-                    modules: {
-                      localIdentName: '[path]-[name]-[hash:base64:5]'
-                    },
-                    localsConvention: 'camelCase'
-                  }
-                },
-                {
-                  loader: 'postcss-loader',
-                  options: {
-                    sourceMap: true
-                  }
-                },
-                'stylus-loader'
-              ]
-            },
-            {
-              resourceQuery: /scoped/,
-              use: [
-                'vue-style-loader',
-                'css-loader',
-                {
-                  loader: 'postcss-loader',
-                  options: {
-                    sourceMap: true
-                  }
-                },
-                'stylus-loader'
-              ]
-            },
-            {
-              use: [
-                'vue-style-loader',
-                {
-                  loader: 'css-loader',
-                  options: {
-                    modules: {
-                      localIdentName: '[path]-[name]-[hash:base64:5]'
-                    },
-                    localsConvention: 'camelCase'
-                  }
-                },
-                {
-                  loader: 'postcss-loader',
-                  options: {
-                    sourceMap: true
-                  }
-                },
-                'stylus-loader'
-              ]
-            }
-          ]
-
+          oneOf: stylusOneOf
         }
       ]
     },
