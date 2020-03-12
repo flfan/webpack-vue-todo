@@ -8,7 +8,12 @@
     "eslint-plugin-vue"
   ],
   // "parser": "babel-eslint"
-  "parser": "vue-eslint-parser",
+  // "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  },
   "rules": {
     "no-new": "off",
     "no-unreachable":"off"

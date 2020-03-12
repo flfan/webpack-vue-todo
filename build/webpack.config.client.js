@@ -19,11 +19,15 @@ const defaultPlugins = [
 
 let config
 const devServer = {
-  port: 8000,
+  port: 8080,
   host: '0.0.0.0',
+  // host: 'localhost',
   useLocalIp: true,
   overlay: {
     errors: true
+  },
+  historyApiFallback: {
+    index: '/public/index.html'
   },
   hot: true
 }

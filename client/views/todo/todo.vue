@@ -1,3 +1,4 @@
+/* eslint-disable vue/singleline-html-element-content-newline */
 <template>
   <section class="real-app">
     <input
@@ -19,6 +20,12 @@
       @toggle="toggleFilter"
       @delAllCompleted="delAllCompleted"
     />
+    <router-link :to="{name: 'test'}">
+      test
+    </router-link>
+    <transition name="fade">
+      <router-view />
+    </transition>
   </section>
 </template>
 

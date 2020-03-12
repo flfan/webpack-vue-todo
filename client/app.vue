@@ -2,26 +2,43 @@
   <div id="app">
     <div id="cover" />
     <Header />
-    <Todo />
+    <router-link to="/app">
+      app
+    </router-link>
+    <router-link to="/login/1235">
+      login
+    </router-link>
+    <router-link to="/login/exact">
+      loginexact
+    </router-link>
+    <transition name="fade">
+      <router-view />
+    </transition>
+    <!-- <Todo /> -->
     <Footer />
+    <router-view name="roterView2" />
   </div>
 </template>
 
 <script>
 import Header from './layout/header.vue'
 import Footer from './layout/footer.jsx'
-import Todo from './views/todo/todo.vue'
+// import Todo from './views/todo/todo.vue'
 
 export default {
   components: {
     Header,
-    Footer,
-    Todo
+    Footer
+    // Todo
+  },
+  mounted () {
+    // console.log(this.$route) // 当前router-link to中的router
   }
 }
 </script>
 
 <style lang="stylus" scoped>
+  font-size 40px
   #app
     position absolute
     left 0
