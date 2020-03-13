@@ -15,6 +15,24 @@ Vue.use(Vuex)
 const router = createRouter()
 const store = createstore()
 
+store.registerModule('c', { // 注册模块
+  state: {
+    textC: 'cModule'
+  }
+})
+
+store.unregisterModule('c')
+store.watch(state => state.count, newcount => console.log(newcount))
+// vuex store plugins
+store.subscribe((mutation, state) => { // mutations 被调用时 执行
+  console.log(mutation.payload)
+  console.log(mutation.type)
+})
+store.subscribeAction((action, state) => { // actions 被调用时 执行
+  console.log(action.payload)
+  console.log(action.type)
+})
+
 // router.beforeEach((to, from, next) => {
 //   console.log('index beforeEach invoked', to.name, from.name)
 //   // if (to.name !== 'loginexact') next({ name: 'loginexact' })
