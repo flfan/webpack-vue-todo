@@ -1,7 +1,7 @@
 <template>
   <header :class="$style.mainHeader">
     <h1>
-      Todo
+      TodoList
     </h1>
   </header>
 </template>
@@ -11,7 +11,7 @@
     text-align center
     h1
         font-size 100px
-        color rgba(175,47,47,0.4)
+        color #745648a8
         font-weight 400
         margin 20px
 </style>

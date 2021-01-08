@@ -6,7 +6,7 @@ export default () => {
     routes,
     // mode: 'hash',
     mode: 'history',
-    base: '/base/',
+    // base: '/base/',
     linkActiveClass: 'active',
     linkExactActiveClass: 'exactActive',
     scrollBehavior (to, from, savePosition) {

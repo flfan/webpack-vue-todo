@@ -15,11 +15,15 @@ const defaultPlugins = [
       NODE_ENV: isDev ? '"development"' : '"production"'
     }
   }),
-  new HtmlPlugin()]
+  new HtmlPlugin({
+    filename: 'index.html',
+    template: path.join(__dirname, './template.html'),
+    inject: true
+  })]
 
 let config
 const devServer = {
-  port: 8080,
+  port: 8081,
   host: '0.0.0.0',
   // host: 'localhost',
   useLocalIp: true,
@@ -27,7 +31,7 @@ const devServer = {
     errors: true
   },
   historyApiFallback: {
-    index: '/public/index.html'
+    index: '/vuetodo/index.html'
   },
   hot: true
 }
@@ -83,14 +87,14 @@ if (isDev) {
         ]
       }]
     },
-    plugins: [
+    plugins: defaultPlugins.concat([
       // new ExtractTextPlugin("styles.[md5:contenthash:hex:8].css"),
       new MiniCssExtractPlugin({
         filename: 'styles.[md5:contenthash:hex:8].css',
         chunkFilename: 'styles.[contenthash:8].css',
         ignoreOrder: false
       })
-    ]
+    ])
   })
 }
 module.exports = config

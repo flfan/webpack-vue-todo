@@ -20,12 +20,12 @@
       @toggle="toggleFilter"
       @delAllCompleted="delAllCompleted"
     />
-    <router-link :to="{name: 'test'}">
+    <!-- <router-link :to="{name: 'test'}">
       test
-    </router-link>
-    <transition name="fade">
+    </router-link> -->
+    <!-- <transition name="fade">
       <router-view />
-    </transition>
+    </transition> -->
   </section>
 </template>
 
@@ -56,12 +56,14 @@ export default {
   },
   methods: {
     addTodo (e) {
-      this.todos.unshift({
-        id: id++,
-        content: e.target.value.trim(),
-        completed: false
-      })
-      e.target.value = ''
+      if (e.target.value) {
+        this.todos.unshift({
+          id: id++,
+          content: e.target.value.trim(),
+          completed: false
+        })
+        e.target.value = ''
+      }
     },
     delitem (id) {
       this.todos.splice(
